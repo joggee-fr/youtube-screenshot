@@ -45,11 +45,20 @@ captureScreenshot = function () {
   canvas.height = parseInt(video.videoHeight);
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+  let canvasContainer = document.querySelector("div.webgl");
+  if (canvasContainer) {
+    console.log("Canvas container");
+    canvas = canvasContainer.querySelector("canvas");
+    console.log(canvas);
+    console.log(canvas.getContext("webgl").getContextAttributes());
+    canvas.preserveDrawingBuffer = true;
+  }
+
   if (currentConfiguration.copyToClipboard)
     copyToClipboard(canvas);
 
-  if (currentConfiguration.downloadFile)
-    downloadFile(canvas, video);
+  //if (currentConfiguration.downloadFile)
+    //downloadFile(canvas, video);
 };
 
 function downloadFile(canvas, video) {
