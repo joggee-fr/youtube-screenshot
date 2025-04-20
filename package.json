@@ -1,0 +1,24 @@
+{
+  "name": "youtube-screenshot",
+  "description": "Firefox add-on taking screenshots on YouTube",
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "npm run clean && parcel build manifest.json --dist-dir ./dist",
+    "watch": "npm run clean && parcel watch manifest.json --dist-dir ./dist",
+    "start": "web-ext run --source-dir ./dist --start-url https://youtube.com --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurumukhi/youtube-screenshot.git"
+  },
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/gurumukhi/youtube-screenshot/issues"
+  },
+  "homepage": "https://github.com/gurumukhi/youtube-screenshot#readme",
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.14.4",
+    "parcel": "^2.14.4",
+    "web-ext": "^8.5.0"
+  }
+}
