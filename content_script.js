@@ -1,3 +1,5 @@
+import sanitize from "sanitize-filename";
+
 // Logger is disabled by default
 function logNull(message) {
   // Nothing
@@ -91,7 +93,9 @@ function getFileName(video) {
     timeString += `0-`+`${mins}-${s}`;
   }
 
-  return `${window.document.title} - ${timeString}.${currentConfiguration.imageFormatExtension}`;
+  let filename = `${window.document.title} - ${timeString}.${currentConfiguration.imageFormatExtension}`;
+  filename = sanitize(filename);
+  return (filename == "") ? "screenshot" : filename;
 };
 
 function addShortsButtonClass(className) {

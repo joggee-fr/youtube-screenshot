@@ -20,5 +20,8 @@
     "@parcel/config-webextension": "^2.14.4",
     "parcel": "^2.14.4",
     "web-ext": "^8.5.0"
+  },
+  "dependencies": {
+    "sanitize-filename": "^1.6.3"
   }
 }
