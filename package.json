@@ -1,0 +1,26 @@
+{
+  "name": "youtube-screenshot",
+  "description": "Cross browser add-on taking screenshots on YouTube easily",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurumukhi/youtube-screenshot.git"
+  },
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/gurumukhi/youtube-screenshot/issues"
+  },
+  "homepage": "https://github.com/gurumukhi/youtube-screenshot",
+  "scripts": {
+    "build-vendor": "esbuild vendor.js --bundle --outfile=vendor.dist.js",
+    "build-ext": "web-ext build --overwrite-dest --ignore-files vendor.js --filename youtube_screenshot_button-{version}.xpi",
+    "build": "run-s build-vendor build-ext",
+    "start-ext": "web-ext run -u https://youtube.com",
+    "start": "run-s build-vendor start-ext"
+  },
+  "dependencies": {
+    "esbuild": "^0.25.5",
+    "npm-run-all": "^4.1.5",
+    "sanitize-filename": "^1.6.3",
+    "web-ext": "^8.9.0"
+  }
+}

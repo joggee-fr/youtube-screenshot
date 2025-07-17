@@ -1,3 +1,6 @@
+// Retrieve imported functions from vendor.js
+const vendor = window.YouTubeScreenshotAddonVendor;
+
 // Logger is disabled by default
 function logNull(message) {
   // Nothing
@@ -91,8 +94,10 @@ function getFileName(video) {
     timeString += `0-`+`${mins}-${s}`;
   }
 
-  return `${window.document.title} - ${timeString}.${currentConfiguration.imageFormatExtension}`;
-};
+  let filename = `${window.document.title} - ${timeString}.${currentConfiguration.imageFormatExtension}`;
+  filename = vendor.sanitize(filename, { replacement: '_' });
+  return (filename == "") ? "screenshot" : filename;
+}
 
 function setShortsButtonStyle(btn) {
   btn.innerHTML = `
@@ -141,7 +146,7 @@ function addButtonOnPlayer(container, regularNotShorts) {
   const type = regularNotShorts ? "regular" : "shorts";
 
   // Check if button already present
-  let previousBtn = container.querySelector(`button.${btnClass}`);
+  const previousBtn = container.querySelector(`button.${btnClass}`);
   if (previousBtn) {
     logger(`Removing previous ${type} screenshot button`);
     previousBtn.remove();

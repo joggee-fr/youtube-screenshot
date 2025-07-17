@@ -1,1 +1,4 @@
 .DS_Store
+node_modules
+vendor.dist.js
+web-ext-artifacts
